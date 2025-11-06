@@ -1,11 +1,14 @@
 ---
-layout: post
-title:  "Collaboration vs Innovation"
-date:   2022-06-20 10:00:00 -0700
-categories: business-strategy collaboration innovation culture
+title: Collaboration vs Innovation
+date: 2022-06-20 10:00:00 -0700
+categories: [Engineering, Culture]
+tags: [collaboration, innovation, team-dynamics, startups]
+redirect_from:
+  - /2022/06/20/collaboration-vs-innovation.html
+  - /2022/06/20/collaboration-vs-innovation/
 ---
 
-You’ve probably heard the proverb, “If you want to go fast, go alone. If you want to go far, go together. It’s a powerful proverb if you know which you want, but what if you want both? There is an inflection point where you have to tradeoff between speed and progress. 
+You've probably heard the proverb, "If you want to go fast, go alone. If you want to go far, go together." It's a powerful proverb if you know which you want, but what if you want both? There is an inflection point where you have to tradeoff between speed and progress. 
 
 I’ve seen a similar tradeoff between collaboration and innovation at startups. Teams often try to optimize for both by collaborating to develop an innovative solution. It’s a reasonable strategy for startups that want to gain market share but also want each member to gain knowledge for the future.
 

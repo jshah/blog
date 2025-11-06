@@ -1,10 +1,13 @@
 ---
-layout: post
-title:  "Thread Safe Connection Pool in Ruby"
-date:   2020-05-26 10:00:00 -0700
-categories: rails ruby connection_pool threads
+title: Thread Safe Connection Pool in Ruby
+date: 2020-05-26 10:00:00 -0700
+categories: [Development, Ruby]
+tags: [rails, threading, connection-pool, concurrency]
+redirect_from:
+  - /2020/05/26/thread-safe-connection-pool-in-ruby.html
+  - /2020/05/26/thread-safe-connection-pool-in-ruby/
 ---
-![safety-first.png](/public/images/safety-first.png)
+![safety-first.png](/assets/img/safety-first.png)
 
 To demonstrate a thread safe implementation of a connection pool, we will use a class instance variable, a Mutex, and the [connection_pool](https://github.com/mperham/connection_pool){:target="_blank"} gem.
 

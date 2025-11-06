@@ -1,10 +1,13 @@
 ---
-layout: post
-title:  "Build for the User"
-date:   2021-05-10 10:00:00 -0700
-categories: software philosophy application design
+title: Build for the User
+date: 2021-05-10 10:00:00 -0700
+categories: [Engineering, Philosophy]
+tags: [product-development, user-experience, software-design]
+redirect_from:
+  - /2021/05/10/build-for-the-user.html
+  - /2021/05/10/build-for-the-user/
 ---
-![build-for-the-user](/public/images/build-for-the-user.jpeg)
+![build-for-the-user](/assets/img/build-for-the-user.jpeg)
 
 As software developers, we have an incredible opportunity to build products that can impact the world. That opportunity starts with empowering users and making sure they find value in our products. 
 

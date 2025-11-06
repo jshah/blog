@@ -14,3 +14,6 @@ vendor
 # ruby
 .bundle/
 .ruby-version
+
+# claude settings
+.claude/settings.local.json

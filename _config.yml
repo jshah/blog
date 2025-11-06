@@ -1,32 +1,161 @@
-# Dependencies
+# The Site Configuration
+
+# Import the theme
+theme: jekyll-theme-chirpy
+
+# Plugins
 plugins:
-  - jekyll-seo-tag
-  - jekyll-paginate
-  - jekyll-gist
+  - jekyll-redirect-from
 
-markdown:         kramdown
-highlighter:      rouge
+# The language of the webpage
+lang: en
 
-# Permalinks
-permalink:        pretty
+# Change to your timezone
+timezone: America/Los_Angeles
 
-# Setup
-title:            jshah
-tagline:          'Blog'
-description:      'A personal blog'
-url:              https://jshah.dev
-baseurl:          /
+# jekyll-seo-tag settings
+title: jshah
+tagline: Blog
+description: A personal blog
 
-author:
-  name:           'Jay Shah'
-  url:            https://twitter.com/jshah___
-
-# Pagination
-paginate:         1
-paginate_path: "page:num"
-
-# Custom vars
-version:          2.1.0
+# Fill in the protocol & hostname for your site
+url: "https://jshah.dev"
 
 github:
-  repo:           https://github.com/jshah/blog
+  username: jshah
+
+twitter:
+  username: jshah___
+
+social:
+  name: Jay Shah
+  email:
+  links:
+    - https://twitter.com/jshah___
+    - https://github.com/jshah
+
+# Site Verification Settings
+webmaster_verifications:
+  google:
+  bing:
+  alexa:
+  yandex:
+  baidu:
+  facebook:
+
+# Web Analytics Settings
+analytics:
+  google:
+    id:
+  goatcounter:
+    id:
+  umami:
+    id:
+  matomo:
+    id:
+  cloudflare:
+    id:
+
+# Prefer color scheme setting
+theme_mode:
+
+# The CDN endpoint for media resources
+cdn:
+
+# the avatar on sidebar, support local or CORS resources
+avatar:
+
+# The URL of the site-wide social preview image used in SEO `og:image` meta tag
+social_preview_image:
+
+# Boolean type, the global switch for TOC in posts
+toc: true
+
+comments:
+  active:
+
+# Self-hosted static assets
+assets:
+  self_host:
+    enabled: false
+    env:
+
+pwa:
+  enabled: true
+  cache:
+    enabled: true
+    deny_paths:
+
+paginate: 10
+
+# The base URL of your site
+baseurl: ""
+
+# ------------ The following options are not recommended to be modified ------------------
+
+kramdown:
+  footnote_backlink: "&#8617;&#xfe0e;"
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: highlight
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
+
+collections:
+  tabs:
+    output: true
+    sort_by: order
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      comments: true
+      toc: true
+      permalink: /posts/:title/
+  - scope:
+      path: _drafts
+    values:
+      comments: false
+  - scope:
+      path: ""
+      type: tabs
+    values:
+      layout: page
+      permalink: /:title/
+
+sass:
+  style: compressed
+
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  profile: false
+  blanklines: false
+  ignore:
+    envs: [development]
+
+exclude:
+  - "*.gem"
+  - "*.gemspec"
+  - docs
+  - tools
+  - README.md
+  - LICENSE
+  - "*.config.js"
+  - package*.json
+
+jekyll-archives:
+  enabled: [categories, tags]
+  layouts:
+    category: category
+    tag: tag
+  permalinks:
+    tag: /tags/:name/
+    category: /categories/:name/

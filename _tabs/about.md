@@ -1,6 +1,7 @@
 ---
 layout: page
-title: About
+icon: fas fa-info-circle
+order: 4
 ---
 
 Hey there, I'm Jay Shah. I'm a software developer currently living in San Francisco, California.

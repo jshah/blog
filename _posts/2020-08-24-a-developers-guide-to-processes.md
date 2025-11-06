@@ -1,8 +1,11 @@
 ---
-layout: post
-title:  "A Developer's Guide to Processes"
-date:   2020-08-24 10:00:00 -0700
-categories: developer guide processes threads 
+title: A Developer's Guide to Processes
+date: 2020-08-24 10:00:00 -0700
+categories: [Development, Systems]
+tags: [processes, operating-systems, fundamentals, guide]
+redirect_from:
+  - /2020/08/24/a-developers-guide-to-processes.html
+  - /2020/08/24/a-developers-guide-to-processes/
 ---
 
 # Process
@@ -47,7 +50,7 @@ We are referring to parent processes here. When programs are executed, they crea
 
 When a program is loaded and executed, it's resulting process is divided into four sections in memory: stack, heap, text, and data.
 
-![process_memory.jpg](/public/images/process_memory.jpg)
+![process_memory.jpg](/assets/img/process_memory.jpg)
 
 ### Text
 
@@ -78,7 +81,7 @@ During the lifecycle of a process, it may be in one of five states.
 4. Waiting - Process moves into the waiting state if it needs to wait for a resource, such as waiting for user input, or waiting for a file to become available.
 5. Terminated - Once the process finishes its execution or is terminated by the operating system, it is moved to the terminated state.
 
-![process_state.jpg](/public/images/process_state.jpg)
+![process_state.jpg](/assets/img/process_state.jpg)
 
 Some processes might cycle between the states of ready, running, and repeatedly waiting due to their program instruction (long-running process example). Other processes might not need to wait and will go from the start, ready, running, and then to terminated (short-lived process example). The lifecycle of a program will depend on the underlying program.
 

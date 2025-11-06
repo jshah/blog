@@ -1,8 +1,11 @@
 ---
-layout: post
-title:  "Early Learnings as a Staff Engineer"
-date:   2021-11-28 10:00:00 -0700
-categories: staff-engineer career development
+title: Early Learnings as a Staff Engineer
+date: 2021-11-28 10:00:00 -0700
+categories: [Engineering, Career]
+tags: [staff-engineer, leadership, career-growth]
+redirect_from:
+  - /2021/11/28/early-learnings-as-a-staff-engineer.html
+  - /2021/11/28/early-learnings-as-a-staff-engineer/
 ---
 
 After acting as a staff engineer over the last six months, I wanted to take a moment to share some of my learnings and observations so far. I hope this list is insightful not just to aspiring staff engineers but to engineers of all levels.
