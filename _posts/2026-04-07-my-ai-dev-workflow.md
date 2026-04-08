@@ -57,7 +57,7 @@ I use a few plugins from the Claude Code marketplace that add structured workflo
 
 [**Feature Dev**](https://github.com/anthropics/claude-code/tree/main/plugins/feature-dev){:target="_blank"} provides guided feature development with specialized subagents for codebase exploration, architecture design, and code review.
 
-**Security Guidance** is a hook-based plugin that fires on every edit and write operation. It detects patterns like command injection, XSS, `eval()`, and pickle deserialization in real-time and shows context-specific warnings without blocking.
+[**Security Guidance**](https://github.com/anthropics/claude-code/tree/main/plugins/security-guidance){:target="_blank"} is a hook-based plugin that fires on every edit and write operation. It detects patterns like command injection, XSS, `eval()`, and pickle deserialization in real-time and shows context-specific warnings without blocking.
 
 I also use a few community skills from the Vercel engineering team:
 
@@ -69,13 +69,13 @@ I also use a few community skills from the Vercel engineering team:
 
 MCP (Model Context Protocol) servers give Claude direct access to external tools and services during development. The ones I get the most value from:
 
-- **Playwright** for browser automation. Navigate pages, fill forms, take screenshots, run end-to-end test flows.
-- **Chrome DevTools** for performance traces, network request analysis, console messages, and Lighthouse audits.
-- **Figma** to access design files, extract component information, and translate designs into code.
-- **Sentry** for error monitoring and debugging context during development.
-- **Datadog** to query metrics, traces, and logs while debugging.
+- [**Playwright**](https://github.com/microsoft/playwright-mcp){:target="_blank"} for browser automation. Navigate pages, fill forms, take screenshots, run end-to-end test flows.
+- [**Chrome DevTools**](https://github.com/ChromeDevTools/chrome-devtools-mcp){:target="_blank"} for performance traces, network request analysis, console messages, and Lighthouse audits.
+- [**Figma**](https://github.com/GLips/Figma-Context-MCP){:target="_blank"} to access design files, extract component information, and translate designs into code.
+- [**Sentry**](https://github.com/getsentry/sentry-mcp){:target="_blank"} for error monitoring and debugging context during development.
+- [**Datadog**](https://github.com/datadog-labs/mcp-server){:target="_blank"} to query metrics, traces, and logs while debugging.
 
-I also have MCP servers configured for GitHub, Slack, Supabase, Context7 (up-to-date library docs), Terraform, and a few others. Most of these are set-and-forget. They're there when I need them.
+I also have MCP servers configured for [GitHub](https://github.com/github/github-mcp-server){:target="_blank"}, [Slack](https://github.com/modelcontextprotocol/servers-archived/tree/main/src/slack){:target="_blank"}, [Supabase](https://github.com/supabase-community/supabase-mcp){:target="_blank"}, [Context7](https://github.com/upstash/context7){:target="_blank"} (up-to-date library docs), [Terraform](https://github.com/hashicorp/terraform-mcp-server){:target="_blank"}, and a few others. Most of these are set-and-forget. They're there when I need them.
 
 # Orchestration: Superset & Conductor
 
