@@ -1,21 +1,21 @@
 ---
 layout: post
-title: "How I Currently Use AI in My Dev Workflow"
+title: "My AI Dev Workflow"
 date: 2026-04-07 10:00:00 -0700
 categories: ai developer-tools workflow
 ---
 
-I've been building my dev workflow around AI tooling over the last year and wanted to share what that looks like today. My setup is layered. Everything is built on top of [Claude Code](https://docs.anthropic.com/en/docs/claude-code){:target="_blank"} as the foundation, with custom skills, plugins, integrations, and orchestration tools on top.
+I've been building my dev workflow around AI tooling over the last year and wanted to share what that looks like today. My setup is layered. Everything is built on top of [Claude Code](https://code.claude.com/docs){:target="_blank"} as the foundation, with custom skills, plugins, integrations, and orchestration tools on top.
 
 This post walks through each layer.
 
 # The Foundation: Claude Code
 
-[Claude Code](https://docs.anthropic.com/en/docs/claude-code){:target="_blank"} is the CLI that powers everything. It's my coding environment. It reads files, writes code, runs commands, and interacts with git. I work in it the way I'd work in a terminal, and everything else in this post layers on top of it.
+[Claude Code](https://code.claude.com/docs){:target="_blank"} is the CLI that powers everything. It's my coding environment. It reads files, writes code, runs commands, and interacts with git. I work in it the way I'd work in a terminal, and everything else in this post layers on top of it.
 
 # Custom Skills
 
-Skills are the most useful part of my setup. They're portable `.md` files you drop into a project's `.claude/skills/` directory that act as reusable slash commands. I've built 11 that automate most of my dev lifecycle.
+Skills are the most useful part of my setup. They're portable `.md` files you drop into a project's `.claude/skills/` directory that act as reusable slash commands. I've built 10 that automate most of my dev lifecycle.
 
 ### Git & Branch Management
 
@@ -27,8 +27,6 @@ Skills are the most useful part of my setup. They're portable `.md` files you dr
 
 - **`/pr`** auto-detects the base branch, extracts ticket IDs from the branch name, finds PR templates, and generates descriptions focused on "why" not "what."
 - **`/address-pr-feedback`** reads all unresolved PR comments, groups them by topic, makes changes, creates logical commits, and replies to each thread with the commit SHA. It can also reject feedback with reasoning.
-- **`/simplify-pr`** launches a subagent to review the branch diff and find over-abstractions, dead code, and verbose patterns. It presents a numbered list of simplification opportunities.
-
 ### Code Review
 
 - **`/code-walkthrough`** is an interactive, educational review. It breaks changes into sections (database, backend, frontend, tests) and walks through them conversationally. Designed to teach, not just check boxes.
@@ -53,19 +51,19 @@ One pattern I want to highlight: `/add-tests` and `/pr-review` deliberately run 
 
 I use a few plugins from the Claude Code marketplace that add structured workflows on top of the base tool.
 
-[**Superpowers**](https://github.com/nicobailey-claude/superpowers){:target="_blank"} adds structured workflows for TDD, systematic debugging, brainstorming, plan writing and execution, parallel agent dispatch, and git worktrees.
+[**Superpowers**](https://github.com/obra/superpowers){:target="_blank"} adds structured workflows for TDD, systematic debugging, brainstorming, plan writing and execution, parallel agent dispatch, and git worktrees.
 
-[**Frontend Design**](https://github.com/nicobailey-claude/frontend-design){:target="_blank"} generates UI that avoids the generic look that AI-generated interfaces tend to have.
+[**Frontend Design**](https://github.com/anthropics/claude-code/tree/main/plugins/frontend-design){:target="_blank"} generates UI that avoids the generic look that AI-generated interfaces tend to have.
 
-[**Feature Dev**](https://github.com/nicobailey-claude/feature-dev){:target="_blank"} provides guided feature development with specialized subagents for codebase exploration, architecture design, and code review.
+[**Feature Dev**](https://github.com/anthropics/claude-code/tree/main/plugins/feature-dev){:target="_blank"} provides guided feature development with specialized subagents for codebase exploration, architecture design, and code review.
 
 **Security Guidance** is a hook-based plugin that fires on every edit and write operation. It detects patterns like command injection, XSS, `eval()`, and pickle deserialization in real-time and shows context-specific warnings without blocking.
 
 I also use a few community skills from the Vercel engineering team:
 
-- [Vercel React Best Practices](https://github.com/vercel/react-best-practices){:target="_blank"} covers performance rules across priority-ranked categories like eliminating waterfalls, bundle size optimization, and rendering performance.
-- [Vercel Composition Patterns](https://github.com/vercel/composition-patterns){:target="_blank"} covers React composition patterns that scale: compound components, explicit variants over boolean props, state decoupling.
-- [Web Design Guidelines](https://github.com/vercel/web-design-guidelines){:target="_blank"} reviews code for accessibility, semantic HTML, responsive design, touch targets, and keyboard navigation.
+- [Vercel React Best Practices](https://github.com/vercel-labs/agent-skills/tree/main/skills/react-best-practices){:target="_blank"} covers performance rules across priority-ranked categories like eliminating waterfalls, bundle size optimization, and rendering performance.
+- [Vercel Composition Patterns](https://github.com/vercel-labs/agent-skills/tree/main/skills/composition-patterns){:target="_blank"} covers React composition patterns that scale: compound components, explicit variants over boolean props, state decoupling.
+- [Web Design Guidelines](https://github.com/vercel-labs/agent-skills/tree/main/skills/web-design-guidelines){:target="_blank"} reviews code for accessibility, semantic HTML, responsive design, touch targets, and keyboard navigation.
 
 # Integrations: MCP Servers
 
@@ -77,15 +75,15 @@ MCP (Model Context Protocol) servers give Claude direct access to external tools
 - **Sentry** for error monitoring and debugging context during development.
 - **Datadog** to query metrics, traces, and logs while debugging.
 
-I also have MCP servers configured for GitHub, Slack, Linear, Supabase, Firebase, Context7 (up-to-date library docs), Terraform, and a few others. Most of these are set-and-forget. They're there when I need them.
+I also have MCP servers configured for GitHub, Slack, Supabase, Context7 (up-to-date library docs), Terraform, and a few others. Most of these are set-and-forget. They're there when I need them.
 
 # Orchestration: Superset & Conductor
 
 This is the layer where things move from a single agent to multiple agents working in parallel.
 
-**Superset** is a local dev environment framework that runs as a daemon. It manages git worktrees for isolated feature branches, fires hooks on agent activity (prompt submissions, tool use, stop events), records terminal history, and coordinates multiple agents through HTTP notifications. It's the infrastructure that lets me run several things at once without stepping on myself.
+[**Superset**](https://superset.sh/){:target="_blank"} is a terminal-based orchestration platform for running multiple AI coding agents in parallel. It supports any CLI-based agent (Claude Code, Codex, Cursor, Gemini, etc.), creates isolated git worktrees for each one, and gives you real-time monitoring and task switching between them. It's the infrastructure that lets me run several things at once without stepping on myself.
 
-[**Conductor**](https://conductor.melty.sh/){:target="_blank"} by Melty Labs is a macOS app that runs a team of Claude Code agents in parallel. Each agent gets an isolated git worktree, and Conductor provides a unified dashboard showing what each agent is working on. It has diff-first code review and merging, and it uses your existing Claude authentication with no separate billing.
+[**Conductor**](https://www.conductor.build/){:target="_blank"} by Melty Labs is a macOS app for running a team of coding agents in parallel. It supports Claude Code and Codex agents, each in an isolated git worktree. Conductor provides a unified dashboard showing what each agent is working on, with code review and merging built in.
 
 I've found that single-agent workflows are useful on their own, but being able to parallelize independent work across multiple agents changes how I think about breaking down tasks.
 
